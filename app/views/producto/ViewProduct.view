@@ -16,6 +16,8 @@
                 if($_SESSION['user']['rol'] == "admin"){
                     echo '<p class="lead"><a href="index.php?ctl=editProduct&id_producto='.$datosProducto["id_producto"].'">Editar producto</a></p>';
                     echo '<p class="lead"><a href="index.php?ctl=delProduct&id_producto='.$datosProducto["id_producto"].'">Eliminar producto</a></p>';
+                }else{
+                    echo '<p class="lead"><a href="index.php?ctl=add_to_car&id_producto='.$datosProducto["id_producto"].'">Añadir a la cesta</a></p>';
                 }
             }
         ?>
