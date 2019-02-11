@@ -1,0 +1,19 @@
+#form_register_product{
+    margin: 10% auto;
+    width: 30%;
+    background-color: black;
+    text-align: center;
+    color: lightgray;
+    padding: 2%;
+    min-width: 300px;
+}
+
+#form_edit_product{
+    margin: 10% auto;
+    width: 30%;
+    background-color: black;
+    text-align: center;
+    color: lightgray;
+    padding: 2%;
+    min-width: 300px;
+}

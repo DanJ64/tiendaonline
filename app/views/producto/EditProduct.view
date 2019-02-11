@@ -1,0 +1,24 @@
+<form id="form_edit_product" action="index.php?ctl=editar_producto&id_producto=<?=$_GET['id_producto']?>" method="POST" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Editar producto</legend>
+        <label for="nombre">Nombre producto</label><br>
+        <input type="text" name="nombre" id="nombre" value="<?=$datosProducto['nombre']?>"><br>
+        <label for="anno">Año de producto</label><br>
+        <input type="number" name="anno" id="anno" value="<?=$datosProducto['anno']?>"><br>
+        <label for="Género">Género</label><br>
+        <input type="text" name="genero" id="genero" value="<?=$datosProducto['genero']?>"><br>
+        <label for="formato">Formato de producto</label><br>
+        <input type="text" name="formato" id="formato" value="<?=$datosProducto['formato']?>"><br>
+        <label for="precio">Precio</label><br>
+        <input type="text" name="precio" id="precio" value="<?=$datosProducto['precio']?>"><br>
+        <label for="cantidad">Cantidad</label><br>
+        <input type="text" name="cantidad" id="cantidad" value="<?=$datosProducto['cantidad']?>"><br><br>
+        <label for="imagen">Subir imagen</label><br>
+        <input type="file" name="imagen" id="imagen"><br><br>
+        <label for="muestra">Muestra</label><br>
+        <input type="text" name="muestra" id="muestra" value='<?=$datosProducto["muestra"]?>'><br><br>
+        <label for="descripcion">Descripcion de producto</label><br>
+        <textarea id="descripcion" name="descripcion" placeholder="<?=$datosProducto['descripcion']?>"></textarea><br><br>
+        <input type="submit" name="editar_producto" value="Aceptar">
+    </fieldset>
+</form>

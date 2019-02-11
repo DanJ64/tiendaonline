@@ -1,0 +1,29 @@
+#datos_usuario>ul{
+    list-style: none;
+}
+
+#datos_usuario{
+    margin: 10% auto;
+    width: 30%;
+    background-color: black;
+    opacity: 0.9;
+    text-align: left;
+    color: lightgray;
+    padding: 2%;
+    min-width: 300px;
+    animation-duration: 0.8s;
+    animation-name: loged;
+}
+
+@keyframes loged{
+
+    from{
+        margin-top: -40%;
+        width: 30%;
+    }
+    
+    to{
+        margin-top: 10%;
+        width: 30%;
+    }
+}

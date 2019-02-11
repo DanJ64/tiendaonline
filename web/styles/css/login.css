@@ -1,0 +1,26 @@
+#form_login, #login, #error_login{
+    margin: 10% auto;
+    width: 20%;
+    background-color: black;
+    opacity: 0.9;
+    text-align: center;
+    color: lightgray;
+    padding: 2%;
+    min-width: 300px;
+
+    animation-duration: 0.8s;
+    animation-name: login;
+}
+
+@keyframes login{
+
+    from{
+        margin-top: -40%;
+        width: 20%;
+    }
+    
+    to{
+        margin-top: 10%;
+        width: 20%;
+    }
+}

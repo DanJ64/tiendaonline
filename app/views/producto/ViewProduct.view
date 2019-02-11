@@ -1,0 +1,26 @@
+<div id="datos_producto">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4"><?=$datosProducto['nombre']?></h1>
+        <img class="img-fluid rounded" alt="Responsive image" src=<?=$datosProducto['imagen']?>>
+        <p class="lead">Formato: <?=$datosProducto['formato']?></p>
+        <p class="lead">Año: <?=$datosProducto['anno']?></p>
+        <p class="lead">Género: <?=$datosProducto['genero']?></p>
+        <p class="lead">Precio: <?=$datosProducto['precio']?>$</p>
+        <p class="lead">En stock: <?=$datosProducto['cantidad']?></p>
+        <p class="lead"><?=$datosProducto['descripcion']?></p>
+        <div><p class="lead">Muestra: </p><?=$datosProducto['muestra']?></div>
+
+        <?php
+            if(!empty($_SESSION['user'])){
+                if($_SESSION['user']['rol'] == "admin"){
+                    echo '<p class="lead"><a href="index.php?ctl=editProduct&id_producto='.$datosProducto["id_producto"].'">Editar producto</a></p>';
+                    echo '<p class="lead"><a href="index.php?ctl=delProduct&id_producto='.$datosProducto["id_producto"].'">Eliminar producto</a></p>';
+                }
+            }
+        ?>
+    </div>
+</div>
+
+    
+</div>

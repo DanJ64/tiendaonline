@@ -1,0 +1,50 @@
+body{
+    background-image: url("../../resources/img/womans-graffiti-1920x1200-artistic-wallpaper.jpg");
+    background-attachment: fixed;
+}
+
+header{
+    background-color: black;
+    height: 100px;
+    color: white;
+}
+
+#menu>li{
+    display: inline-block;
+    padding: 1%;
+}
+
+#menu>li>a{
+    text-decoration: none;
+    color: white;
+}
+
+#menu>li:hover{
+    background-color: black;
+    color: white;
+}
+
+article{
+    margin: 2% 2%;
+    background-color: white;
+    height: 500px;
+}
+
+table td>img{
+    width: 50%;
+}
+
+.productos{
+    display: flex;
+    flex-grow: row wrap;
+    justify-content: space-around;
+}
+
+img{
+    width: 40%;
+}
+
+#datos_producto{
+    width: 50%;
+    margin: auto auto;
+}

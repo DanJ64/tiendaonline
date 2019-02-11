@@ -1,0 +1,21 @@
+
+<div id="datos_usuario">
+    <ul>
+        <li>Dirección de correo electrónico: <?=$_SESSION['user']['correo']?></li>
+        <li>Nombre: <?=$_SESSION['user']['nombre']?></li>
+        <li>Apellidos: <?=$_SESSION['user']['apellidos']?></li>
+        <li>Fecha de nacimiento: <?=$_SESSION['user']['fechaNacimiento']?></li>
+        <li>Nº de teléfono: <?=$_SESSION['user']['telefono']?></li>
+        <li>Dirección: <?=$_SESSION['user']['direccion']?></li>
+        <li>Contraseña: <?=$_SESSION['user']['passwd']?></li>
+        <?php
+            if($_SESSION['user']['rol']=="admin"){
+                echo "<li>Perfil de usuario: ".$_SESSION['user']['rol'].'</li>';
+            }
+        ?>
+            
+    </ul>
+
+    <a href="index.php?ctl=editUser">Editar perfil</a>
+    <a href="index.php?ctl=delUser">Eliminar cuenta</a>
+</div>
