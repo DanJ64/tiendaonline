@@ -36,7 +36,7 @@ table td>img{
 
 .productos{
     display: flex;
-    flex-grow: row wrap;
+    flex-flow: row wrap;
     justify-content: space-around;
 }
 
