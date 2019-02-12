@@ -1,5 +1,5 @@
 <?php
-    require_once("app/db/usuario/ConfigDB.php");
+    require_once("app/db/producto/ConfigDB.php");
     require_once("app/db/Conexion.php");
     require_once("app/models/producto/ProductModel.php");
 

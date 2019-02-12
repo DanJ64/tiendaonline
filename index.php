@@ -16,7 +16,8 @@
         "ver_producto" => "app/controllers/producto/ViewProductController.php",
         "editProduct" => "app/controllers/producto/EditProductController.php",
         "delProduct" => "app/controllers/producto/DeleteProductController.php",
-        "car" => "app/controllers/producto/CartProductController.php"
+        "car" => "app/controllers/producto/CartProductController.php",
+        "add_to_car" => "app/controllers/producto/CartProductController.php"
     ];
 
     $enlacesPOST = [
