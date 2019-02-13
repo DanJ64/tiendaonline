@@ -5,23 +5,33 @@
             parent::__construct($host, $user, $pass, $nameDb);
         }
 
-        function getIdsProductos(){
+        function getCestaProductos(){
             $idsProductos = [];
-            if (isset($_COOKIE['musicstore'])) {
-                foreach ($_COOKIE['musicstore'] as $value){
-                    array_push($idsProductos, $value);
-                
-                }
+            
+            if (isset($_SESSION['cesta'])) {
+                $idsProductos = $_SESSION['cesta'];
             }
             return $idsProductos;
         }
 
-        function crearCookie($id){
-            setcookie("musicstore[$id]", "$id", time() + 3600);
+        /**
+         * En la cesta solo se guarda la id como key
+         * y un valor que indica la cantidad
+         * */
+
+        function guardarEnLaCesta($id){
+            $cantidad = 1;
+            
+            if(isset($_SESSION['cesta']["$id"])){
+                $_SESSION['cesta']["$id"]++;
+            }else{
+                $_SESSION['cesta']["$id"] = $cantidad;
+            }
+            
         }
 
-        function eliminarCookie($id){
-            setcookie("musicstore[$id]", "$id", time() - 3600);
+        function eliminarDeLaCesta($id){
+            unset($_SESSION['cesta']["$id"]);
         }
     }
 ?>

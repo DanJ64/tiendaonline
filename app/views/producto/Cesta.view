@@ -1,0 +1,26 @@
+<div>
+<table class = "table table-light">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Formato</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    
+        <?php
+            foreach($productos as $producto)
+            {
+                echo "<tr>";
+                echo "<td>".$producto['nombre']."</td>";
+                echo "<td>".$producto['formato']."</td>";
+                echo "<td>".$producto['precio']." €</td>";
+                echo "<td>".$producto['unidades']."</td>";
+                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'">Eliminar</td>';
+                echo "</tr>";
+            }
+        ?>
+</table>
+</div>
