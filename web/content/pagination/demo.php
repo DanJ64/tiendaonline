@@ -57,7 +57,7 @@ Search:
         <img src="<?=$row['imagen']?>" class="card-img-top" alt="<?=$row['nombre']?>">
             <div class="card-body">
                 <h5 class="card-title"><?=$row['nombre']?></h5>
-                <p class="card-text"><?=$row['descripcion']?></p>
+                <p class="card-text"><?=$row['precio']?>€</p>
                 <a href="index.php?ctl=ver_producto&id_producto=<?=$row['id_producto']?>" class="btn btn-primary">Ver producto</a>
             </div>
         </div>
