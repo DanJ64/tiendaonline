@@ -1,24 +1,44 @@
 <form id="form_register_product" action="index.php?ctl=registrar_producto" method="POST" enctype="multipart/form-data">
     <fieldset>
         <legend>Registro de nuevo producto</legend>
-        <label for="nombre">Nombre producto</label><br>
-        <input type="text" name="nombre" id="nombre"><br>
-        <label for="Año">Año de producto</label><br>
-        <input type="text" name="anno" id="anno"><br>
-        <label for="Género">Género</label><br>
-        <input type="text" name="genero" id="genero"><br>
-        <label for="formato">Formato de producto</label><br>
-        <input type="text" name="formato" id="formato"><br>
-        <label for="precio">Precio</label><br>
-        <input type="text" name="precio" id="precio"><br>
-        <label for="cantidad">Cantidad</label><br>
-        <input type="text" name="cantidad" id="cantidad"><br><br>
-        <label for="imagen">Subir imagen</label><br>
-        <input type="file" name="imagen" id="imagen"><br><br>
-        <label for="muestra">Muestra</label><br>
-        <input type="muestra" name="muestra" id="muestra"><br><br>
-        <label for="descripcion">Descripcion de producto</label><br>
-        <textarea id="descripcion" name="descripcion"></textarea><br><br>
-        <input type="submit" name="registrar_producto" value="Registrar producto">
+        <div class="form-group">
+            <label for="nombre">Nombre producto</label>
+            <input type="text" class="form-control" name="nombre" id="nombre">
+        </div>
+        <div class="form-group">
+            <label for="Año">Año de producto</label>
+            <input type="text" class="form-control" name="anno" id="anno">
+        </div>
+        <div class="form-group">
+            <label for="Género">Género</label>
+            <input type="text" class="form-control" name="genero" id="genero">
+        </div>
+        <div class="form-group">
+            <label for="formato">Formato de producto</label>
+            <input type="text" class="form-control" name="formato" id="formato">
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="text" class="form-control" name="precio" id="precio">
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="text" class="form-control" name="cantidad" id="cantidad">
+        </div>
+        <div class="form-group"><label for="imagen">Subir imagen</label>
+            <input type="file" name="imagen" id="imagen">
+        </div>
+
+        <div class="form-group">
+            <label for="muestra">Muestra</label>
+            <input type="muestra" class="form-control" name="muestra" id="muestra">
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripcion de producto</label>
+            <textarea id="descripcion" class="form-control" name="descripcion"></textarea>
+        </div>
+
+        <input type="submit" class="btn btn-primary" name="registrar_producto" value="Registrar producto">
     </fieldset>
 </form>
