@@ -1,6 +1,18 @@
 body{
-    background-image: url("../../resources/img/music_store_background2.jpg");
+    background-image: url("../../resources/img/DTVRsa2.jpg");
     background-attachment: fixed;
+}
+
+@media all and (max-width: 1920px){
+    body{
+        background-image: url("../../resources/img/DTVRsa2_1080.jpg");
+    }
+}
+
+@media all and (max-width: 1366px){
+    body{
+        background-image: url("../../resources/img/DTVRsa2_1080.jpg");
+    }
 }
 
 header{
