@@ -44,7 +44,7 @@ while($rows = $query->fetch())
 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 Search: 
 <input type="text" name="search" placeholder="Search" value="<?php echo $search ?>">
-<input type="submit" value="Search">
+<input type="submit" value="Buscar">
 </form>
 <br><br>
 

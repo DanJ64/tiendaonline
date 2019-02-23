@@ -16,6 +16,6 @@
             
     </ul>
 
-    <a href="index.php?ctl=editUser">Editar perfil</a>
-    <a href="index.php?ctl=delUser">Eliminar cuenta</a>
+    <a href="index.php?ctl=editUser"><button type="button" class="btn btn-info">Editar perfil</button></a>
+    <a href="index.php?ctl=delUser"><button type="button" class="btn btn-danger">Eliminar cuenta</button></a>
 </div>

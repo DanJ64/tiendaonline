@@ -18,7 +18,7 @@
                 echo "<td>".$producto['formato']."</td>";
                 echo "<td>".$producto['precio']." €</td>";
                 echo "<td>".$producto['unidades']."</td>";
-                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'">Eliminar</td>';
+                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'"><button type="button" class="btn btn-info">Eliminar</button></td>';
                 echo "</tr>";
             }
         ?>
