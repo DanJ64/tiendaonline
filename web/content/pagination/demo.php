@@ -5,7 +5,7 @@ require "PDO_Pagination.php";
 $root = 'root';
 $password = '';
 $host = 'localhost';
-$dbname = 'tienda_web';
+$dbname = 'tienda_online';
 
 $connection = new PDO("mysql:host=$host;dbname=$dbname;", $root, $password);
 $pagination = new PDO_Pagination($connection);
