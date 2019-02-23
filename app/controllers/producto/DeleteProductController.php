@@ -11,8 +11,6 @@
 
         $conection = new ProductModel(ConfigDB::$host, ConfigDB::$user, ConfigDB::$pass, ConfigDB::$nameDb);
 
-
-
         if($conection->eliminarProducto($id_producto)){
 
             $eliminado = true;

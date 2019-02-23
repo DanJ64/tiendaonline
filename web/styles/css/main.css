@@ -11,9 +11,10 @@ body{
 
 @media all and (max-width: 1366px){
     body{
-        background-image: url("../../resources/img/DTVRsa2_1080.jpg");
+        background-image: url("../../resources/img/DTVRsa2_1366.jpg");
     }
 }
+
 
 header{
     background-color: black;
