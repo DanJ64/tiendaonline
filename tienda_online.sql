@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2019 a las 05:03:41
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Tiempo de generación: 24-02-2019 a las 05:03:32
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda_web`
+-- Base de datos: `tienda_online`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `productos` (
   `genero` varchar(100) NOT NULL,
   `formato` varchar(50) NOT NULL,
   `precio` float NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `unidades` int(11) NOT NULL,
   `imagen` varchar(200) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `muestra` varchar(255) NOT NULL
@@ -45,10 +45,11 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre`, `anno`, `genero`, `formato`, `precio`, `cantidad`, `imagen`, `descripcion`, `muestra`) VALUES
-(2, 'Jinjer - Micro', 2019, 'Metal', 'CD', 9.9, 10, 'web/resources/img_productos/jinjer_micro.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dN_xThlV6_I\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(3, 'Nemix - The Planet', 2015, 'DarkSynth', 'CD', 5, 24, 'web/resources/img_productos/nemix.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/xagptShRJlI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(4, 'Skunk D.F. - Esencia', 2007, 'Rock', 'CD', 7.9, 4, 'web/resources/img_productos/uskunk5b35d.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/q_4v_9ERjeY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
+INSERT INTO `productos` (`id_producto`, `nombre`, `anno`, `genero`, `formato`, `precio`, `unidades`, `imagen`, `descripcion`, `muestra`) VALUES
+(1, 'Jinjer - Micro', 2019, 'Metal', 'CD', 8.99, 20, 'web/resources/img_productos/jinjer_micro.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/QfhLma7gtPg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(3, 'Nemix - The Planet', 2015, 'DarkSynth', 'Digital', 5, 24, 'web/resources/img_productos/nemix.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/xagptShRJlI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(4, 'Skunk D.F. - Esencia', 2007, 'Rock', 'CD', 7.9, 4, 'web/resources/img_productos/uskunk5b35d.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/q_4v_9ERjeY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
+(6, 'Cult of Luna & Julie Christmas - Cygnus (Perturbator remix)', 2018, 'Synth', 'Digital', 0.5, 0, 'web/resources/img_productos/perturbator-remix.jpg', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/gv7hFegk14o\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,7 @@ CREATE TABLE `usuarios` (
   `fechaNacimiento` date NOT NULL,
   `telefono` int(11) NOT NULL,
   `direccion` varchar(100) NOT NULL,
-  `pass` varchar(100) NOT NULL,
+  `passwd` varchar(100) NOT NULL,
   `rol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -71,7 +72,7 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`correo`, `nombre`, `apellidos`, `fechaNacimiento`, `telefono`, `direccion`, `pass`, `rol`) VALUES
+INSERT INTO `usuarios` (`correo`, `nombre`, `apellidos`, `fechaNacimiento`, `telefono`, `direccion`, `passwd`, `rol`) VALUES
 ('correo@correo.com', 'correo', 'correo', '2019-01-10', 123456789, 'correo', 'piruleta', 'user'),
 ('dan@dan', 'Dan', 'J', '1992-06-04', 987654321, 'Calle de la piruleta', 'piruleta', 'admin'),
 ('l@l', 'lol', 'lol', '2019-01-31', 1234, 'lol', 'lol', 'user');
@@ -100,7 +101,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
