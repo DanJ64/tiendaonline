@@ -1,4 +1,5 @@
 <?php
+
     require_once("app/db/producto/ConfigDB.php");
     require_once("app/db/Conexion.php");
     require_once("app/models/producto/ProductModel.php");
@@ -14,21 +15,33 @@
          * por lo tanto me queda el rray con el producto y la cantidad
          * */
 
-    if(isset($_GET['ctl']) && $_GET['ctl'] == "car"){
-        $datosCesta = $cesta->getCestaProductos();
-        
-        if(!empty($datosCesta)){
-            foreach($datosCesta as $key => $value){
-                $productos[$key] = $cesta->getProducto($key);
-                $productos[$key]["unidades"] = $value;
-                $productos[$key]["precio"] *= $value;
-            }
-        }
+    if(isset($_GET['ctl'])){
 
-    }else if (isset($_GET['ctl']) && $_GET['ctl'] == "add_to_car"){
-        $cesta->guardarEnLaCesta($_GET['id_producto']);
-        header("Location: index.php?ctl=ver_producto&id_producto=".$_GET['id_producto']);
+        if($_GET['ctl'] == "car"){
+            $datosCesta = $cesta->getCestaProductos();
+            
+            if(!empty($datosCesta)){
+                foreach($datosCesta as $key => $value){
+                    $productos[$key] = $cesta->getProducto($key);
+                    $productos[$key]["cantidad"] = $value;
+                    $productos[$key]["precio"] *= $value;
+                }
+            }
+
+        }else if ($_GET['ctl'] == "add_to_car"){
+            $cesta->guardarEnLaCesta($_GET['id_producto']);
+            header("Location: index.php?ctl=ver_producto&id_producto=".$_GET['id_producto']);
+
+        }else if ($_GET['ctl'] == "delUnit"){
+            $cesta->eliminarUnidad($_GET['id_producto']);
+            header("Location: index.php?ctl=car");
+
+        }else if ($_GET['ctl'] == "addUnit"){
+            $cesta->agregarUnidad($_GET['id_producto']);
+            header("Location: index.php?ctl=car");
+        }
     }
+
     
     if(isset($_GET['delItem'])){
         $cesta->eliminarDeLaCesta($_GET['delItem']);

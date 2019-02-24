@@ -30,6 +30,20 @@
             
         }
 
+        function agregarUnidad($id){
+            
+            if(isset($_SESSION['cesta']["$id"])){
+                $_SESSION['cesta']["$id"]++;
+            }
+        }
+
+        function eliminarUnidad($id){
+            
+            if(isset($_SESSION['cesta']["$id"])){
+                $_SESSION['cesta']["$id"]--;
+            }
+        }
+
         function eliminarDeLaCesta($id){
             unset($_SESSION['cesta']["$id"]);
         }

@@ -1,26 +1,70 @@
 <div>
-<table class = "table table-light">
-    <thead class="thead-dark">
-        <tr>
-            <th>Nombre</th>
-            <th>Formato</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    
+    <table class = "table table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Formato</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        
         <?php
             foreach($productos as $producto)
             {
                 echo "<tr>";
                 echo "<td>".$producto['nombre']."</td>";
                 echo "<td>".$producto['formato']."</td>";
-                echo "<td>".$producto['precio']." €</td>";
-                echo "<td>".$producto['unidades']."</td>";
-                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'"><button type="button" class="btn btn-info">Eliminar</button></td>';
+                echo "<td class='precio'>".$producto['precio']." €</td>";
+
+                if($producto['formato'] != "Digital"){
+        ?>
+                <td>
+                    <?php
+                        if($producto['cantidad']>1){
+                    ?>
+                        <a href="index.php?ctl=delUnit&id_producto=<?=$producto['id_producto']?>"><button type="button" class="btn btn-primary btn-sm">-</button></a>
+                    <?php
+                        }
+                    ?>
+                    <?=$producto['cantidad']?>
+                    <?php
+                        if($producto['cantidad']<4){
+                    ?>
+                        <a href="index.php?ctl=addUnit&id_producto=<?=$producto['id_producto']?>"><button type="button" class="btn btn-primary btn-sm">+</button></a>
+                    <?php
+                        }
+                    ?>
+                </td>
+        <?php
+                }else{
+                    echo "<td>".$producto['cantidad']."</td>";
+                }
+                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
                 echo "</tr>";
             }
         ?>
 </table>
 </div>
+
+<table class = "table table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th class="total">Total</th>
+                <th>Confirmar</th>
+                <th>Borrar todo</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <td id="total">0</td>
+            <td>Confirmar</td>
+            <td>Borrar todo</td>
+        </tr>
+        
+</table>
+</div>
+
+
+<script src="web/scripts/js/calcularTotal.js"></script>
