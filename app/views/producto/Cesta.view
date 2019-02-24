@@ -45,12 +45,11 @@
                 echo "</tr>";
             }
         ?>
-</table>
-</div>
 
-<table class = "table table-light">
         <thead class="thead-dark">
             <tr>
+                <th></th>
+                <th></th>
                 <th class="total">Total</th>
                 <th>Confirmar</th>
                 <th>Borrar todo</th>
@@ -58,13 +57,13 @@
         </thead>
 
         <tr>
+            <td></td>
+            <td></td>
             <td id="total">0</td>
             <td>Confirmar</td>
             <td>Borrar todo</td>
         </tr>
-        
 </table>
 </div>
-
 
 <script src="web/scripts/js/calcularTotal.js"></script>

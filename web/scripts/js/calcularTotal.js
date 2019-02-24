@@ -4,7 +4,6 @@ window.onload = function(){
     let precioTotal = 0;
     
     for(precio of precios){
-        //let p = precio.split("€")
         precioTotal += parseFloat(precio.textContent);
     }
 

@@ -7,7 +7,6 @@
 
     $cesta = new CarritoModel(ConfigDB::$host, ConfigDB::$user, ConfigDB::$pass, ConfigDB::$nameDb);
     $productos = [];
-
     /**
          * Recojo el id y la cantidad de la cesta
          * Despues al array productos le paso el producto buscado por la id y 
@@ -23,8 +22,19 @@
             if(!empty($datosCesta)){
                 foreach($datosCesta as $key => $value){
                     $productos[$key] = $cesta->getProducto($key);
-                    $productos[$key]["cantidad"] = $value;
-                    $productos[$key]["precio"] *= $value;
+                    $precio = 0;
+
+                    if($productos[$key]["formato"] != "Digital"){
+                        if($value <= CarritoModel::CANTIDAD_MAXIMA){
+                            $precio = $value;
+                        }else{
+                            $precio = CarritoModel::CANTIDAD_MAXIMA;
+                        }
+                    }else{
+                        $precio = 1;
+                    }
+                    $productos[$key]["cantidad"] = $precio;
+                    $productos[$key]["precio"] *= $precio;
                 }
             }
 
