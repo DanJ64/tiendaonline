@@ -27,7 +27,7 @@
 
     }else if (isset($_GET['ctl']) && $_GET['ctl'] == "add_to_car"){
         $cesta->guardarEnLaCesta($_GET['id_producto']);
-        header("Location: index.php?ctl=car");
+        header("Location: index.php?ctl=ver_producto&id_producto=".$_GET['id_producto']);
     }
     
     if(isset($_GET['delItem'])){
