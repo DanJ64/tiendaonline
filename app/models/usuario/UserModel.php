@@ -70,28 +70,13 @@
 
         function getUsuario($correo, $pass){
             $stmt = $this->conexion->getConexion()->prepare(
-                "SELECT * FROM usuarios WHERE correo = ? AND pass = ?");
+                "SELECT * FROM usuarios WHERE correo = ? AND passwd = ?");
             
             if($stmt){
                 $stmt->bind_param("ss", $correo, $pass);
                 $stmt->execute();
-                $stmt->bind_result($email, $nombre, $apellidos, $fechaNacimiento, $telefono, $direccion, $passwd, $rol);
-                $stmt->fetch();
-                
-                $datosUsuario = [];
-
-                if(!empty($email)){
-                    
-                    $datosUsuario=['correo'=>$email,
-                                 'nombre'=>$nombre,
-                                 'apellidos'=>$apellidos,
-                                 'fechaNacimiento'=>$fechaNacimiento,
-                                 'telefono'=>$telefono,
-                                 'direccion'=>$direccion,
-                                 'passwd'=>$passwd,
-                                 'rol'=>$rol            
-                    ];
-                }
+                $resultado = $stmt->get_result();
+                $datosUsuario = $resultado->fetch_assoc();
             }
             $stmt->close();
             return $datosUsuario;

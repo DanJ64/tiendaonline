@@ -61,26 +61,8 @@
             if($stmt){
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
-                //$stmt->bind_result($id, $nombre, $anno, $genero, $formato, $precio, $unidades, $imagen, $descripcion, $muestra);
                 $resultado = $stmt->get_result();
-                
-
-                if(!empty($id)){
-                    $datosProducto = $resultado->fetch_assoc();
-                    /*
-                    $datosProducto=['id_producto'=>$id,
-                                 'nombre'=> $nombre,
-                                 'anno' => $anno,
-                                 'genero' => $genero,
-                                 'formato'=> $formato,
-                                 'precio'=> $precio,
-                                 'unidades'=> $unidades,
-                                 'imagen'=> $imagen,
-                                 'descripcion' => $descripcion,
-                                 'muestra' => $muestra    
-                    ];
-                    */
-                }
+                $datosProducto = $resultado->fetch_assoc();
             }
             
             $stmt->close();
