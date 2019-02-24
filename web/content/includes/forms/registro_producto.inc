@@ -15,7 +15,10 @@
         </div>
         <div class="form-group">
             <label for="formato">Formato de producto</label>
-            <input type="text" class="form-control" name="formato" id="formato">
+            <select class="form-control" id="formato" name="formato">
+                <option value="CD">CD</option>
+                <option value="Digital">Digital</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
