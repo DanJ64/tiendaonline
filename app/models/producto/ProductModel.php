@@ -12,14 +12,14 @@
             
             $stmt = $this->conexion->getConexion()->prepare(
                 "UPDATE productos SET nombre = ?, anno = ?, genero = ?,
-                formato = ?, precio = ?, cantidad = ?,
+                formato = ?, precio = ?, unidades = ?,
                 imagen = ?, descripcion = ?, muestra = ? WHERE id_producto = ?");
             
             if($stmt){
                 
                 $stmt->bind_param("sissdisssi", $nuevosDatos["nombre"],
                 $nuevosDatos["anno"], $nuevosDatos["genero"], $nuevosDatos["formato"], $nuevosDatos["precio"],
-                $nuevosDatos["cantidad"], $nuevosDatos["imagen"], $nuevosDatos["descripcion"], $nuevosDatos["muestra"], $id);
+                $nuevosDatos["unidades"], $nuevosDatos["imagen"], $nuevosDatos["descripcion"], $nuevosDatos["muestra"], $id);
                 
                 $stmt->execute();
 
@@ -61,24 +61,25 @@
             if($stmt){
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
-                $stmt->bind_result($id, $nombre, $anno, $genero, $formato, $precio, $cantidad, $imagen, $descripcion, $muestra);
-                $stmt->fetch();
+                //$stmt->bind_result($id, $nombre, $anno, $genero, $formato, $precio, $unidades, $imagen, $descripcion, $muestra);
+                $resultado = $stmt->get_result();
                 
-                $datosProducto = [];
 
                 if(!empty($id)){
-                    
+                    $datosProducto = $resultado->fetch_assoc();
+                    /*
                     $datosProducto=['id_producto'=>$id,
                                  'nombre'=> $nombre,
                                  'anno' => $anno,
                                  'genero' => $genero,
                                  'formato'=> $formato,
                                  'precio'=> $precio,
-                                 'cantidad'=> $cantidad,
+                                 'unidades'=> $unidades,
                                  'imagen'=> $imagen,
                                  'descripcion' => $descripcion,
                                  'muestra' => $muestra    
                     ];
+                    */
                 }
             }
             
@@ -86,18 +87,18 @@
             return $datosProducto;
         }
 
-        function setProducto($nombre, $anno, $genero, $formato, $precio, $cantidad, $imagen, $descripcion, $muestra){
+        function setProducto($nombre, $anno, $genero, $formato, $precio, $unidades, $imagen, $descripcion, $muestra){
             
             //comprobacion de existencia
             $productoInsertado = false;
 
             $stmt = $this->conexion->getConexion()->prepare(
                 "INSERT INTO productos (
-                nombre, anno , genero, formato, precio, cantidad, imagen, descripcion, muestra) 
+                nombre, anno , genero, formato, precio, unidades, imagen, descripcion, muestra) 
                 values(?,?,?,?,?,?,?,?,?)");
 
             if($stmt){
-                $stmt->bind_param("sissdisss", $nombre, $anno, $genero, $formato, $precio, $cantidad, $imagen, $descripcion, $muestra);
+                $stmt->bind_param("sissdisss", $nombre, $anno, $genero, $formato, $precio, $unidades, $imagen, $descripcion, $muestra);
                 $stmt->execute();
 
                 //Si ninguna fila ha sido afectada, ya existe producto

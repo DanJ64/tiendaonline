@@ -24,7 +24,7 @@
             <?php
                 if($datosProducto["formato"] != "Digital"){
             ?>
-                    <p class="lead">En stock: <?=$datosProducto['cantidad']?> unidades</p>
+                    <p class="lead">En stock: <?=$datosProducto['unidades']?> unidades</p>
             <?php
                 }
             ?>

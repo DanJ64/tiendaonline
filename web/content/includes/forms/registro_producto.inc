@@ -1,3 +1,4 @@
+<script src="web/scripts/js/formato_producto.js"></script>
 <form id="form_register_product" action="index.php?ctl=registrar_producto" method="POST" enctype="multipart/form-data">
     <fieldset>
         <legend>Registro de nuevo producto</legend>
@@ -25,8 +26,8 @@
             <input type="text" class="form-control" name="precio" id="precio">
         </div>
         <div class="form-group">
-            <label for="cantidad">Cantidad</label>
-            <input type="text" class="form-control" name="cantidad" id="cantidad">
+            <label for="unidades">Unidades</label>
+            <input type="number" class="form-control" name="unidades" id="unidades">
         </div>
         <div class="form-group"><label for="imagen">Subir imagen</label>
             <input type="file" name="imagen" id="imagen">

@@ -10,7 +10,7 @@
     $genero = $_POST["genero"];
     $formato = $_POST["formato"];
     $precio = $_POST["precio"];
-    $cantidad = $_POST["cantidad"];
+    $unidades = $_POST["unidades"];
     $descripcion = $_POST["descripcion"];
     $muestra = $_POST['muestra'];
 
@@ -26,7 +26,7 @@
     $conexion = new ProductModel(ConfigDB::$host, ConfigDB::$user, ConfigDB::$pass, ConfigDB::$nameDb);
 
     //Comprobacion de existencia de producto
-    if(!$conexion->setProducto($nombre, $anno, $genero, $formato, $precio, $cantidad, $imagen, $descripcion, $muestra)){
+    if(!$conexion->setProducto($nombre, $anno, $genero, $formato, $precio, $unidades, $imagen, $descripcion, $muestra)){
         $existeProducto = true;
     }else{
 
