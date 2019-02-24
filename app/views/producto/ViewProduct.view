@@ -6,8 +6,8 @@
         <?php
             if(!empty($_SESSION['user'])){
                 if($_SESSION['user']['rol'] == "admin"){
-                    echo '<p class="lead"><a href="index.php?ctl=editProduct&id_producto='.$datosProducto["id_producto"].'"><button type="button" class="btn btn-warning">Editar producto</button></a></p>';
-                    echo '<p class="lead"><a href="index.php?ctl=delProduct&id_producto='.$datosProducto["id_producto"].'"><button type="button" class="btn btn-danger">Eliminar produto</button></a></p>';
+                    echo '<p class="lead"><a href="index.php?ctl=editProduct&id_producto='.$datosProducto["id_producto"].'"><button type="button" class="btn btn-warning">Editar producto</button></a>';
+                    echo ' <a href="index.php?ctl=delProduct&id_producto='.$datosProducto["id_producto"].'"><button type="button" class="btn btn-danger">Eliminar produto</button></a></p>';
                 }else{
                     echo '<p class="lead"><a href="index.php?ctl=add_to_car&id_producto='.$datosProducto["id_producto"].'"><button type="button" class="btn btn-info">Añadir a la cesta</button></a></p>';
                 }
@@ -15,12 +15,23 @@
         ?>
 
         <img class="img-fluid rounded" alt="Responsive image" src=<?=$datosProducto['imagen']?>>
-        <p class="lead">Formato: <?=$datosProducto['formato']?></p>
-        <p class="lead">Año: <?=$datosProducto['anno']?></p>
-        <p class="lead">Género: <?=$datosProducto['genero']?></p>
-        <p class="lead">Precio: <?=$datosProducto['precio']?>$</p>
-        <p class="lead">En stock: <?=$datosProducto['cantidad']?></p>
-        <p class="lead"><?=$datosProducto['descripcion']?></p>
+        <hr>
+        <div class="container datos_producto">
+            <p class="lead">Formato: <?=$datosProducto['formato']?></p>
+            <p class="lead">Año: <?=$datosProducto['anno']?></p>
+            <p class="lead">Género: <?=$datosProducto['genero']?></p>
+            <p class="lead">Precio: <?=$datosProducto['precio']?>€</p>
+            <?php
+                if($datosProducto["formato"] != "Digital"){
+            ?>
+                    <p class="lead">En stock: <?=$datosProducto['cantidad']?> unidades</p>
+            <?php
+                }
+            ?>
+            
+            <p class="lead"><?=$datosProducto['descripcion']?></p>
+        </div>
+        <hr>
         <div><p class="lead">Muestra: </p><?=$datosProducto['muestra']?></div>
     </div>
 </div>
