@@ -56,6 +56,10 @@
     <?php
 
     //NAVBAR
+    $buscador = "";
+    if(!empty($_REQUEST["search"])){
+        $buscador = $_REQUEST["search"];
+    }
     require_once("web/content/includes/navs/navbar.inc");
     
     //CAROUSEL
@@ -74,7 +78,7 @@
                 }
             }
         }else{
-            require_once("web/content/pagination/demo.php");
+            require_once("app/controllers/producto/pagination/demo.php");
         }
 
     //COMPROBACION DE LA VARIABLE POST
