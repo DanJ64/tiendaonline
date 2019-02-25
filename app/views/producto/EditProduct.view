@@ -11,8 +11,8 @@
         <input type="text" name="formato" id="formato" value="<?=$datosProducto['formato']?>"><br>
         <label for="precio">Precio</label><br>
         <input type="text" name="precio" id="precio" value="<?=$datosProducto['precio']?>"><br>
-        <label for="cantidad">Cantidad</label><br>
-        <input type="text" name="cantidad" id="cantidad" value="<?=$datosProducto['cantidad']?>"><br><br>
+        <label for="unidades">Unidades</label><br>
+        <input type="text" name="unidades" id="unidades" value="<?=$datosProducto['unidades']?>"><br><br>
         <label for="imagen">Subir imagen</label><br>
         <input type="file" name="imagen" id="imagen"><br><br>
         <label for="muestra">Muestra</label><br>

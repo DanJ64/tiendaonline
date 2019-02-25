@@ -1,21 +1,41 @@
 <form id="form_edit_user" action="index.php?ctl=editando" method="POST">
     <fieldset>
         <legend>Editar datos de usuario</legend>
-        <label for="correo">Correo</label><br>
-        <input type="email" name="correo" id="correo" value="<?=$_SESSION['user']['correo']?>" required><br>
-        <label for="nombre">Nombre</label><br>
-        <input type="text" name="nombre" id="nombre" value="<?=$_SESSION['user']['nombre']?>" required><br>
-        <label for="apellidos">Apellidos</label><br>
-        <input type="text" name="apellidos" id="apellidos" value="<?=$_SESSION['user']['apellidos']?>" required><br>
-        <label for="fechaNacimiento">Fecha de nacimiento:</label><br>
-        <input type="date" name="fechaNacimiento" id="fechaNacimiento" value="<?=$_SESSION['user']['fechaNacimiento']?>" required><br>
-        <label for="telefono">Teléfono</label><br>
-        <input type="text" name="telefono" id="telefono" value="<?=$_SESSION['user']['telefono']?>" required><br>
-        <label for="direccion">Dirección</label><br>
-        <input type="text" name="direccion" id="direccion" value="<?=$_SESSION['user']['direccion']?>" required><br>
-        <label for="pass">Contraseña</label><br>
-        <input type="password" name="passwd" id="passwd" value="<?=$_SESSION['user']['passwd']?>" required><br><br>
+        <div class="form-group">
+            <label for="correo">Correo</label><br>
+            <input type="email" class="form-control" name="correo" id="correo" value="<?=$_SESSION['user']['correo']?>" required><br>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label><br>
+            <input type="text" class="form-control" name="nombre" id="nombre" value="<?=$_SESSION['user']['nombre']?>" required><br>
             
-        <input type="submit" name="editar_usuario" value="Aceptar">
+        </div>
+
+        <div class="form-group">
+            <label for="apellidos">Apellidos</label><br>
+            <input type="text" class="form-control" name="apellidos" id="apellidos" value="<?=$_SESSION['user']['apellidos']?>" required><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="fechaNacimiento">Fecha de nacimiento:</label><br>
+            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" value="<?=$_SESSION['user']['fechaNacimiento']?>" required><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="telefono">Teléfono</label><br>
+            <input type="text" class="form-control" name="telefono" id="telefono" value="<?=$_SESSION['user']['telefono']?>" required><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="direccion">Dirección</label><br>
+            <input type="text" class="form-control" name="direccion" id="direccion" value="<?=$_SESSION['user']['direccion']?>" required><br>
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Contraseña</label><br>
+            <input type="password" class="form-control" name="passwd" id="passwd" value="<?=$_SESSION['user']['passwd']?>" required><br><br>
+        </div> 
+        <input type="submit" class="btn btn-primary" name="editar_usuario" value="Aceptar">
     </fieldset>
 </form>

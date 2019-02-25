@@ -1,26 +1,80 @@
+<br>
 <div>
-<table class = "table table-light">
-    <thead class="thead-dark">
-        <tr>
-            <th>Nombre</th>
-            <th>Formato</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    
+    <?php
+        if(isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])){
+    ?>
+    <table class = "table table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Formato</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        
         <?php
             foreach($productos as $producto)
             {
                 echo "<tr>";
                 echo "<td>".$producto['nombre']."</td>";
                 echo "<td>".$producto['formato']."</td>";
-                echo "<td>".$producto['precio']." €</td>";
-                echo "<td>".$producto['unidades']."</td>";
-                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'"><button type="button" class="btn btn-info">Eliminar</button></td>';
+                echo "<td class='precio'>".$producto['precio']." €</td>";
+
+                if($producto['formato'] != "Digital"){
+        ?>
+                <td>
+                    <?php
+                        if($producto['cantidad']>1){
+                    ?>
+                        <a href="index.php?ctl=delUnit&id_producto=<?=$producto['id_producto']?>"><button type="button" class="btn btn-primary btn-sm">-</button></a>
+                    <?php
+                        }
+                    ?>
+                    <?=$producto['cantidad']?>
+                    <?php
+                        if($producto['cantidad']<4){
+                    ?>
+                        <a href="index.php?ctl=addUnit&id_producto=<?=$producto['id_producto']?>"><button type="button" class="btn btn-primary btn-sm">+</button></a>
+                    <?php
+                        }
+                    ?>
+                </td>
+        <?php
+                }else{
+                    echo "<td>".$producto['cantidad']."</td>";
+                }
+                echo '<td><a href="index.php?ctl=car&delItem='.$producto["id_producto"].'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
                 echo "</tr>";
             }
         ?>
+    
+        <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th></th>
+                <th class="total">Total</th>
+                <th>Confirmar</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td id="total">0</td>
+            <td><a href="index.php?ctl=confirmar_compra"><button type="button" class="btn btn-success">Confirmar</button></td>
+            <td></td>
+        </tr>
+    
 </table>
+<script src="web/scripts/js/calcularTotal.js"></script>
+<?php
+        }else{
+            $mensaje = "No hay productos en al cesta";
+            require_once("app/views/producto/MessageProduct.view");
+        }
+?>
 </div>
+

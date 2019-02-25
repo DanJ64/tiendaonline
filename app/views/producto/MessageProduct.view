@@ -1,4 +1,4 @@
-<div id="mensaje">
+<div id="message">
     <?php
         echo $mensaje;
     ?>
