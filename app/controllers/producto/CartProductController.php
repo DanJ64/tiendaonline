@@ -36,7 +36,7 @@
             setProductos();
             $cesta->eliminarCesta();
             crearPDF();
-            //header("Location: index.php?ctl=car");
+            header("Location: index.php");
         }
     }
 
