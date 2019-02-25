@@ -3,9 +3,25 @@ body{
     background-attachment: fixed;
 }
 
+header{
+    background-image: url("../../resources/img/header.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    height: 150px;
+    color: white;
+    font-size: 4em;
+    text-align: bottom;
+}
+
 @media all and (max-width: 1920px){
     body{
         background-image: url("../../resources/img/DTVRsa2_1080.jpg");
+    }
+
+    header{
+        background-image: url("../../resources/img/header_1920.jpg");
+        
     }
 }
 
@@ -13,14 +29,13 @@ body{
     body{
         background-image: url("../../resources/img/DTVRsa2_1366.jpg");
     }
+
+    header{
+        background-image: url("../../resources/img/header_1366.jpg");
+        
+    }
 }
 
-
-header{
-    background-color: black;
-    height: 100px;
-    color: white;
-}
 
 #menu>li{
     display: inline-block;
