@@ -15,14 +15,14 @@
                 $stmt = $this->conexion->getConexion()->prepare(
                     "UPDATE usuarios SET
                     nombre = ?, apellidos = ?, fechaNacimiento = ?,
-                    telefono = ?, direccion = ?, pass = ? 
-                    WHERE correo = ? AND pass = ?");
+                    telefono = ?, direccion = ?, passwd = ? 
+                    WHERE correo = ? AND passwd = ?");
             }else{
                 $stmt = $this->conexion->getConexion()->prepare(
                     "UPDATE usuarios SET correo = ? ,
                     nombre = ?, apellidos = ?, fechaNacimiento = ?,
-                    telefono = ?, direccion = ?, pass = ? 
-                    WHERE correo = ? AND pass = ?");
+                    telefono = ?, direccion = ?, passwd = ? 
+                    WHERE correo = ? AND passwd = ?");
             }
             
             //Si el correo anterior es igual al del array no intentará cambiar la clave principal
@@ -34,7 +34,7 @@
                 }else{
                     $stmt->bind_param("ssssissss", $nuevosDatos["correo"], $nuevosDatos["nombre"],
                     $nuevosDatos["apellidos"], $nuevosDatos["fechaNacimiento"], $nuevosDatos["telefono"], $nuevosDatos["direccion"],
-                    $nuevosDatos["pass"], $oldEmail, $oldPasswd);
+                    $nuevosDatos["passwd"], $oldEmail, $oldPasswd);
                 }
                 //print_r($nuevosDatos);
                 $stmt->execute();
@@ -51,7 +51,7 @@
             $usuarioEliminado = false;
 
             $stmt = $this->conexion->getConexion()->prepare(
-                "DELETE FROM usuarios WHERE correo = ? AND pass = ?"
+                "DELETE FROM usuarios WHERE correo = ? AND passwd = ?"
             );
             
             if($stmt){
@@ -89,7 +89,7 @@
 
             $stmt = $this->conexion->getConexion()->prepare(
                 "INSERT INTO usuarios (
-                correo, nombre, apellidos, fechaNacimiento, telefono, direccion, pass, rol) 
+                correo, nombre, apellidos, fechaNacimiento, telefono, direccion, passwd, rol) 
                 values(?,?,?,?,?,?,?,?)");
 
             if($stmt){
