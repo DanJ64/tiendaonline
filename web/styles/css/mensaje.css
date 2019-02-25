@@ -9,10 +9,10 @@
     min-width: 300px;
 
     animation-duration: 0.8s;
-    animation-name: login;
+    animation-name: mensaje;
 }
 
-@keyframes login{
+@keyframes mensaje{
 
     from{
         margin-top: -40%;

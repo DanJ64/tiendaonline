@@ -54,6 +54,37 @@
             }
         }
 
+        function confirmarCompra(){
+            if(isset($_SESSION['cesta'])){
+                foreach($_SESSION['cesta'] as $id => $cantidad){
+                    $this->restarUnidades($id, $cantidad);
+                }
+            }
+        }
+
+        function getUnidades($id){
+            $sql = "SELECT unidades FROM productos WHERE id_producto = ?";
+            $stmt = $this->conexion->getConexion()->prepare($sql);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->bind_result($unidades);
+            $stmt->fetch();
+            $stmt->close();
+
+            return $unidades;
+        }
+
+        function restarUnidades($id, $cantidad){
+            $unidadesExistentes = $this->getUnidades($id);
+            //$resta = $unidadesExistentes - $cantidad;
+            $sql = "UPDATE productos SET unidades = $unidadesExistentes - $cantidad WHERE id_producto = ?";
+            
+            $stmt = $this->conexion->getConexion()->prepare($sql);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
         function eliminarDeLaCesta($id){
             unset($_SESSION['cesta']["$id"]);
         }

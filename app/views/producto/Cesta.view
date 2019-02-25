@@ -1,4 +1,8 @@
+<br>
 <div>
+    <?php
+        if(isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])){
+    ?>
     <table class = "table table-light">
         <thead class="thead-dark">
             <tr>
@@ -45,14 +49,14 @@
                 echo "</tr>";
             }
         ?>
-
+    
         <thead class="thead-dark">
             <tr>
                 <th></th>
                 <th></th>
                 <th class="total">Total</th>
                 <th>Confirmar</th>
-                <th>Borrar todo</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -60,10 +64,17 @@
             <td></td>
             <td></td>
             <td id="total">0</td>
-            <td>Confirmar</td>
-            <td>Borrar todo</td>
+            <td><a href="index.php?ctl=confirmar_compra"><button type="button" class="btn btn-success">Confirmar</button></td>
+            <td></td>
         </tr>
+    
 </table>
+<script src="web/scripts/js/calcularTotal.js"></script>
+<?php
+        }else{
+            $mensaje = "No hay productos en al cesta";
+            require_once("app/views/producto/MessageProduct.view");
+        }
+?>
 </div>
 
-<script src="web/scripts/js/calcularTotal.js"></script>

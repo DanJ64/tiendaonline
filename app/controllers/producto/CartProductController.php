@@ -49,6 +49,10 @@
         }else if ($_GET['ctl'] == "addUnit"){
             $cesta->agregarUnidad($_GET['id_producto']);
             header("Location: index.php?ctl=car");
+            
+        }else if($_GET['ctl'] == "confirmar_compra"){
+            $cesta->confirmarCompra();
+            header("Location: index.php?ctl=car");
         }
     }
 
