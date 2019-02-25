@@ -55,10 +55,11 @@
         require("app/models/producto/fpdf/fpdf.php");
         $pdf = new FPDF();
         $pdf->AddPage();
-        $pdf->SetFont('Arial','B', 14);
+        
         //CABECERA PDF
-        $pdf->Cell(60,10,'FACTURACION');
-        $pdf->SetFont('Arial','B', 12);
+        $pdf->SetFont('Arial','B', 14);
+        $pdf->Cell(120,10,'FACTURACION', 0, 0, 'L');
+        $pdf->SetFont('Arial','B', 10);
         $pdf->Cell(60,10,'Fecha: '.date('l jS F Y'), 0, 0,'C');
         $pdf->Ln();$pdf->Ln();
 
@@ -67,37 +68,42 @@
         $pdf->Ln();
 
         $pdf->SetFont('times','B', 10);
-        $pdf->Cell(60,5,'Nombre: '.$_SESSION['user']['nombre']." ".$_SESSION['user']['apellidos']);
+        $pdf->Cell(10,5, "");
+        $pdf->Cell(60,5,'- Nombre: '.$_SESSION['user']['nombre']." ".$_SESSION['user']['apellidos']);
         $pdf->Ln();
-
-        $pdf->Cell(60,5,"Direccion: ".$_SESSION['user']['direccion']);
+        $pdf->Cell(10,5, "");
+        $pdf->Cell(60,5,"- Direccion: ".$_SESSION['user']['direccion']);
         $pdf->Ln();
-
-        $pdf->Cell(60,5,"Tlf:".$_SESSION['user']['telefono']);
+        $pdf->Cell(10,5, "");
+        $pdf->Cell(60,5,"- Tlf:".$_SESSION['user']['telefono']);
         $pdf->Ln();
-
-        $pdf->Cell(60,5,"Correo: ".$_SESSION['user']['correo']);
+        $pdf->Cell(10,5, "");
+        $pdf->Cell(60,5,"- Correo: ".$_SESSION['user']['correo']);
         $pdf->Ln();
         $pdf->Ln();
 
         //CABECERA TABLA
-        $pdf->SetFont('Arial','B', 14);
-        $pdf->Cell(60,8,"Producto", 1, 0,'C');
-        $pdf->Cell(40,8,"Formato", 1, 0,'C');
-        $pdf->Cell(40,8,"Cantidad", 1, 0,'C');
-        $pdf->Cell(40,8,"Precio", 1, 0,'C');
+        $pdf->SetFont('Arial','B', 12);
+        $pdf->Cell(90,8,"Producto", 1, 0,'C');
+        $pdf->Cell(30,8,"Formato", 1, 0,'C');
+        $pdf->Cell(30,8,"Cantidad", 1, 0,'C');
+        $pdf->Cell(30,8,"Precio", 1, 0,'C');
         $pdf->Ln();
+        $pdf->SetFont('Arial','B', 8);
 
         //DATOS TABLA
         foreach($productos as $producto){
-            $pdf->Cell(60,7,$producto['nombre'], 1, 0,'C');
-            $pdf->Cell(40,7,$producto['formato'], 1, 0,'C');
-            $pdf->Cell(40,7,$producto['cantidad'], 1, 0,'C');
-            $pdf->Cell(40,7,$producto['precio']." euros", 1, 0,'C');
+            $pdf->Cell(90,7,$producto['nombre'], 1, 0,'C');
+            $pdf->Cell(30,7,$producto['formato'], 1, 0,'C');
+            $pdf->Cell(30,7,$producto['cantidad'], 1, 0,'C');
+            $pdf->Cell(30,7,$producto['precio']." euros", 1, 0,'C');
             $pdf->Ln();
             $precioTotal += $producto['precio'];
         }
+
+        //TOTAL
         $pdf->Ln();
+        $pdf->SetFont('Arial','B', 12);
         $pdf->Cell(60,8,"Total: ".$precioTotal." Euros", 1, 0,'C');
 
         $pdf->Output();
