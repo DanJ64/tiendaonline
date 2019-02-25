@@ -88,5 +88,9 @@
         function eliminarDeLaCesta($id){
             unset($_SESSION['cesta']["$id"]);
         }
+
+        function eliminarCesta(){
+            unset($_SESSION['cesta']);
+        }
     }
 ?>

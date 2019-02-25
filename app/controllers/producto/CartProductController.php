@@ -17,26 +17,7 @@
     if(isset($_GET['ctl'])){
 
         if($_GET['ctl'] == "car"){
-            $datosCesta = $cesta->getCestaProductos();
-            
-            if(!empty($datosCesta)){
-                foreach($datosCesta as $key => $value){
-                    $productos[$key] = $cesta->getProducto($key);
-                    $precio = 0;
-
-                    if($productos[$key]["formato"] != "Digital"){
-                        if($value <= CarritoModel::CANTIDAD_MAXIMA){
-                            $precio = $value;
-                        }else{
-                            $precio = CarritoModel::CANTIDAD_MAXIMA;
-                        }
-                    }else{
-                        $precio = 1;
-                    }
-                    $productos[$key]["cantidad"] = $precio;
-                    $productos[$key]["precio"] *= $precio;
-                }
-            }
+            setProductos();
 
         }else if ($_GET['ctl'] == "add_to_car"){
             $cesta->guardarEnLaCesta($_GET['id_producto']);
@@ -49,10 +30,13 @@
         }else if ($_GET['ctl'] == "addUnit"){
             $cesta->agregarUnidad($_GET['id_producto']);
             header("Location: index.php?ctl=car");
-            
+
         }else if($_GET['ctl'] == "confirmar_compra"){
             $cesta->confirmarCompra();
-            header("Location: index.php?ctl=car");
+            setProductos();
+            $cesta->eliminarCesta();
+            crearPDF();
+            //header("Location: index.php?ctl=car");
         }
     }
 
@@ -60,6 +44,89 @@
     if(isset($_GET['delItem'])){
         $cesta->eliminarDeLaCesta($_GET['delItem']);
         header("Location: index.php?ctl=car");
+    }
+
+    function crearPDF(){
+        global $cesta;
+        global $productos;
+        $precioTotal = 0;
+        
+        ob_start();
+        require("app/models/producto/fpdf/fpdf.php");
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B', 14);
+        //CABECERA PDF
+        $pdf->Cell(60,10,'FACTURACION');
+        $pdf->SetFont('Arial','B', 12);
+        $pdf->Cell(60,10,'Fecha: '.date('l jS F Y'), 0, 0,'C');
+        $pdf->Ln();$pdf->Ln();
+
+        //DATOS CLIENTE
+        $pdf->Cell(60,5,'Datos del cliente:');
+        $pdf->Ln();
+
+        $pdf->SetFont('times','B', 10);
+        $pdf->Cell(60,5,'Nombre: '.$_SESSION['user']['nombre']." ".$_SESSION['user']['apellidos']);
+        $pdf->Ln();
+
+        $pdf->Cell(60,5,"Direccion: ".$_SESSION['user']['direccion']);
+        $pdf->Ln();
+
+        $pdf->Cell(60,5,"Tlf:".$_SESSION['user']['telefono']);
+        $pdf->Ln();
+
+        $pdf->Cell(60,5,"Correo: ".$_SESSION['user']['correo']);
+        $pdf->Ln();
+        $pdf->Ln();
+
+        //CABECERA TABLA
+        $pdf->SetFont('Arial','B', 14);
+        $pdf->Cell(60,8,"Producto", 1, 0,'C');
+        $pdf->Cell(40,8,"Formato", 1, 0,'C');
+        $pdf->Cell(40,8,"Cantidad", 1, 0,'C');
+        $pdf->Cell(40,8,"Precio", 1, 0,'C');
+        $pdf->Ln();
+
+        //DATOS TABLA
+        foreach($productos as $producto){
+            $pdf->Cell(60,7,$producto['nombre'], 1, 0,'C');
+            $pdf->Cell(40,7,$producto['formato'], 1, 0,'C');
+            $pdf->Cell(40,7,$producto['cantidad'], 1, 0,'C');
+            $pdf->Cell(40,7,$producto['precio']." euros", 1, 0,'C');
+            $pdf->Ln();
+            $precioTotal += $producto['precio'];
+        }
+        $pdf->Ln();
+        $pdf->Cell(60,8,"Total: ".$precioTotal." Euros", 1, 0,'C');
+
+        $pdf->Output();
+        ob_end_flush();
+    }
+
+    function setProductos(){
+        global $cesta;
+        global $productos;
+        $datosCesta = $cesta->getCestaProductos();
+            
+        if(!empty($datosCesta)){
+            foreach($datosCesta as $key => $value){
+                $productos[$key] = $cesta->getProducto($key);
+                $precio = 0;
+
+                if($productos[$key]["formato"] != "Digital"){
+                    if($value <= CarritoModel::CANTIDAD_MAXIMA){
+                        $precio = $value;
+                    }else{
+                        $precio = CarritoModel::CANTIDAD_MAXIMA;
+                    }
+                }else{
+                    $precio = 1;
+                }
+                $productos[$key]["cantidad"] = $precio;
+                $productos[$key]["precio"] *= $precio;
+            }
+        }
     }
 
     require_once("app/views/producto/Cesta.view");
