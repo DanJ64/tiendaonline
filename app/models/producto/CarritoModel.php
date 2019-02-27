@@ -63,26 +63,32 @@
         }
 
         function getUnidades($id){
-            $sql = "SELECT unidades FROM productos WHERE id_producto = ?";
+            $sql = "SELECT formato, unidades FROM productos WHERE id_producto = ?";
             $stmt = $this->conexion->getConexion()->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();
-            $stmt->bind_result($unidades);
+            $stmt->bind_result($formato, $unidades);
             $stmt->fetch();
             $stmt->close();
+
+            if($formato == "Digital"){
+                $unidades = null;
+            }
 
             return $unidades;
         }
 
         function restarUnidades($id, $cantidad){
             $unidadesExistentes = $this->getUnidades($id);
-            //$resta = $unidadesExistentes - $cantidad;
-            $sql = "UPDATE productos SET unidades = $unidadesExistentes - $cantidad WHERE id_producto = ?";
-            
-            $stmt = $this->conexion->getConexion()->prepare($sql);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
+
+            if($unidadesExistentes != null){
+                $sql = "UPDATE productos SET unidades = $unidadesExistentes - $cantidad WHERE id_producto = ?";
+                
+                $stmt = $this->conexion->getConexion()->prepare($sql);
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
 
         function eliminarDeLaCesta($id){
